@@ -450,6 +450,81 @@ h3 {
   resize: vertical;
 }
 .note-input { flex: 1 1 200px; max-width: 320px; padding: 8px 12px; }
+.status-update { color: #9fc4e8; background: #1b2530; }
+a.sub-name:hover { text-decoration: underline; }
+
+.modpage { padding: 40px 0 64px; }
+.back {
+  display: inline-block;
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.back::before { content: "\2190\00a0"; }
+.back:hover { color: var(--text); text-decoration: none; }
+
+.mod-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.mod-props {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 22px 22px 20px;
+}
+.mod-props h1 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  word-break: break-word;
+}
+.mod-ver {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 4px 0 18px;
+}
+.props {
+  margin: 0 0 20px;
+  border-top: 1px solid var(--border);
+}
+.props > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.props dt { color: var(--muted); }
+.props dd { margin: 0; color: var(--text); text-align: right; }
+.install { width: 100%; text-align: center; padding: 11px 18px; font-size: 0.95rem; }
+.install-hint { margin: 10px 0 0; line-height: 1.5; }
+
+.mod-body { min-width: 0; }
+.mod-short {
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.mod-details p {
+  max-width: 640px;
+  white-space: pre-line;
+}
+
+.update-box {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+.update-box p { max-width: 680px; }
+
+@media (max-width: 760px) {
+  .mod-layout { grid-template-columns: 1fr; gap: 28px; }
+}
 
 @media (max-width: 640px) {
   .nav-links { display: none; }

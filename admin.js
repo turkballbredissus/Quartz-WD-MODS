@@ -38,11 +38,23 @@
     emptyEl.hidden = rows.length > 0;
     list.replaceChildren(...rows.map(r => {
       const d = el("div", "sub-row stacked");
+      const isUpdate = r.kind === "update";
       const head = el("div", "mod-head");
-      head.append(el("span", "sub-name", r.name), el("span", "mod-version", "v" + r.version), el("span", "mod-tag", r.tag));
+      head.append(
+        el("span", "status " + (isUpdate ? "status-update" : ""), isUpdate ? "Mod Update" : "New mod"),
+        el("span", "sub-name", r.name),
+        el("span", "mod-version", "v" + r.version),
+        el("span", "mod-tag", r.tag)
+      );
+      if (isUpdate && r.mod_id) {
+        const link = el("a", "", "open live mod");
+        link.href = "mod.html?id=" + r.mod_id;
+        link.target = "_blank";
+        head.appendChild(link);
+      }
       const meta = el("div", "mod-meta", "from " + r.account_name + ", " + fmtDate(r.created_at));
-      const desc = el("p", "mod-desc", r.description);
-      d.append(head, meta, desc);
+      d.append(head, meta);
+      if (!isUpdate) d.appendChild(el("p", "mod-desc", r.description));
       if (r.details) d.appendChild(el("p", "sub-note", r.details));
       d.appendChild(sourceBox(r.source));
 
@@ -89,8 +101,10 @@
       const d = el("div", "sub-row");
       const left = el("div");
       const head = el("div", "mod-head");
-      head.append(el("span", "sub-name", r.name), el("span", "mod-version", "v" + r.version), el("span", "mod-tag", r.tag));
-      left.append(head, el("div", "mod-meta", "by " + r.author_name + ", " + r.downloads + " downloads, added " + fmtDate(r.created_at)));
+      const name = el("a", "sub-name", r.name);
+      name.href = "mod.html?id=" + r.id;
+      head.append(name, el("span", "mod-version", "v" + r.version), el("span", "mod-tag", r.tag));
+      left.append(head, el("div", "mod-meta", "by " + r.author_name + ", " + r.downloads + " installs, added " + fmtDate(r.created_at)));
       d.appendChild(left);
       if (Q.isOwner()) {
         const del = el("button", "btn-ghost", "Remove");

@@ -86,5 +86,18 @@ window.Q = (function () {
     return String(name).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "mod";
   }
 
-  return { client, configured, state, ready, isAdmin, isOwner, signOut, renderNav, errorText, downloadText, slug, el };
+  function fmtDate(iso) {
+    return new Date(iso).toISOString().slice(0, 10);
+  }
+
+  function bindFileToTextarea(fileInput, textarea, onName) {
+    fileInput.addEventListener("change", () => {
+      const f = fileInput.files[0];
+      if (!f) return;
+      f.text().then(t => { textarea.value = t; });
+      if (onName) onName(f.name.replace(/\.js$/i, "").replace(/[-_]+/g, " "));
+    });
+  }
+
+  return { client, configured, state, ready, isAdmin, isOwner, signOut, renderNav, errorText, downloadText, slug, fmtDate, bindFileToTextarea, el };
 })();

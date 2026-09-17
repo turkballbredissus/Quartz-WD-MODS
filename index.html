@@ -24,7 +24,7 @@
     <nav class="nav-links">
       <a href="#mods">Mods</a>
       <a href="#installing">Installing</a>
-      <a href="#request">New Mod Request</a>
+      <a href="request.html">New Mod Request</a>
     </nav>
     <div class="nav-account" id="nav-account"></div>
   </div>
@@ -61,59 +61,8 @@
 
   <section id="request" class="prose">
     <div class="wrap">
-      <h2>New Mod Request</h2>
-      <p>A Quartz mod needs to be a plain js file without dependencies. it shouldnt touch the internet, shouldnt write localstorage, and it needs to print a line that says it installed when pasted. mods are reviewed by admins before they get on the site. you can have three waiting max.</p>
-
-      <div id="request-signin" class="notice" hidden>
-        <a href="login.html">Sign in</a> to send a request.
-      </div>
-
-      <form id="request-form" class="form" hidden>
-        <div class="form-row">
-          <label>
-            <span>Mod name</span>
-            <input name="name" type="text" maxlength="60" required>
-          </label>
-          <label>
-            <span>Version</span>
-            <input name="version" type="text" maxlength="20" value="1.0.0" required>
-          </label>
-          <label>
-            <span>Category</span>
-            <select name="tag" required>
-              <option>Gameplay</option>
-              <option>Visual</option>
-              <option>Utility</option>
-              <option>Editor</option>
-            </select>
-          </label>
-        </div>
-        <label>
-          <span>Short description</span>
-          <input name="description" type="text" maxlength="160" required placeholder="One sentence, shown in the list">
-        </label>
-        <label>
-          <span>Details</span>
-          <textarea name="details" rows="3" maxlength="1000" placeholder="Keybinds, what it changes, anything the user should know before pasting"></textarea>
-        </label>
-        <label>
-          <span>Mod file</span>
-          <input name="file" type="file" accept=".js,text/javascript">
-        </label>
-        <label>
-          <span>Or paste the source</span>
-          <textarea name="source" rows="10" maxlength="200000" spellcheck="false" required></textarea>
-        </label>
-        <div class="form-actions">
-          <button class="btn-primary" type="submit">Send request</button>
-          <span class="form-status" id="request-status"></span>
-        </div>
-      </form>
-
-      <div id="my-requests" hidden>
-        <h3>Your requests</h3>
-        <div class="sub-list" id="my-requests-list"></div>
-      </div>
+      <h2>Made a mod?</h2>
+      <p>Send it in on the <a href="request.html">New Mod Request</a> page. Admins look at every request before it shows up here, and you can push updates to your own mods from their page afterwards.</p>
     </div>
   </section>
 </main>

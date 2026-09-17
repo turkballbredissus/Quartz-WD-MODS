@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quartz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./">
+      <img class="brand-mark" src="logo.png" alt="" width="28" height="28">
+      <span>Quartz</span>
+    </a>
+    <nav class="nav-links">
+      <a href="./#mods">Mods</a>
+      <a href="./#installing">Installing</a>
+      <a href="request.html">New Mod Request</a>
+    </nav>
+    <div class="nav-account" id="nav-account"></div>
+  </div>
+</header>
+
+<main>
+  <section class="modpage">
+    <div class="wrap">
+      <a class="back" href="./#mods">All mods</a>
+      <p class="empty" id="mod-missing" hidden>That mod does not exist.</p>
+
+      <div class="mod-layout" id="mod-layout" hidden>
+        <aside class="mod-props">
+          <h1 id="m-name"></h1>
+          <div class="mod-ver" id="m-version"></div>
+          <dl class="props">
+            <div><dt>Last update</dt><dd id="m-updated"></dd></div>
+            <div><dt>Uploaded</dt><dd id="m-created"></dd></div>
+            <div><dt>Category</dt><dd id="m-tag"></dd></div>
+            <div><dt>Author</dt><dd id="m-author"></dd></div>
+            <div><dt>Installs</dt><dd id="m-downloads"></dd></div>
+          </dl>
+          <button class="btn-primary install" id="m-install" type="button">Install</button>
+          <p class="mod-meta install-hint">Downloads the .js file. Paste its contents into the Web Dashers console.</p>
+        </aside>
+
+        <div class="mod-body">
+          <p class="mod-short" id="m-short"></p>
+          <div class="mod-details" id="m-details"></div>
+        </div>
+      </div>
+
+      <div id="update-box" class="update-box" hidden>
+        <h2>Send an update</h2>
+        <p>This is your mod. Changes go to the admins as a Mod Update and replace the live version once approved. One update can wait at a time.</p>
+        <form id="update-form" class="form">
+          <div class="form-row">
+            <label>
+              <span>New version</span>
+              <input name="version" type="text" maxlength="20" required>
+            </label>
+          </div>
+          <label>
+            <span>Description</span>
+            <textarea name="details" rows="5" maxlength="1000"></textarea>
+          </label>
+          <label>
+            <span>New mod file</span>
+            <input name="file" type="file" accept=".js,text/javascript">
+          </label>
+          <label>
+            <span>Or paste the source</span>
+            <textarea name="source" rows="10" maxlength="200000" spellcheck="false" required></textarea>
+          </label>
+          <div class="form-actions">
+            <button class="btn-primary" type="submit">Send update</button>
+            <span class="form-status" id="update-status"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>Quartz is not affiliated with Web Dashers or RobTop Games.</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="mod.js"></script>
+</body>
+</html>
