@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quartz</title>
+<meta name="description" content="Web Dashers Mods">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./">
+      <img class="brand-mark" src="logo.png" alt="" width="28" height="28">
+      <span>Quartz</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#mods">Mods</a>
+      <a href="#installing">Installing...</a>
+      <a href="#request">New Mod Request</a>
+    </nav>
+    <div class="nav-account" id="nav-account"></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Mods for WD</h1>
+      <p class="lead">This is a site for Web Dashers mods! You paste the contents of the .JS files into the console while in the web dashers site and you get the mod!</p>
+    </div>
+  </section>
+
+  <section id="mods" class="catalog">
+    <div class="wrap">
+      <div class="toolbar">
+        <input id="search" class="search" type="search" placeholder="Search mods" autocomplete="off" spellcheck="false">
+        <div class="filters" id="filters" role="tablist"></div>
+      </div>
+      <div class="count" id="count"></div>
+      <div class="mod-list" id="list" hidden></div>
+      <p class="empty" id="empty">Nothing here yet!</p>
+    </div>
+  </section>
+
+  <section id="installing" class="prose">
+    <div class="wrap">
+      <h2>Installing a mod</h2>
+      <p>to put the mod into WD, you need to open dev tools using F12. then click Console and paste the full code of the .JS mod you got!</p>
+      <p>Chrome might ask for u to type "allow pasting" the first time. if you are worried about the safety of mods, you need to now that we check the contents of the mod and behaviour before putting it on the site!</p>
+      <p>mods dissapear when u reload, so if you need it again you need to paste it again</p>
+    </div>
+  </section>
+
+  <section id="request" class="prose">
+    <div class="wrap">
+      <h2>New Mod Request</h2>
+      <p>A Quartz mod needs to be a plain js file without dependencies. it shouldnt touch the internet, shouldnt write localstorage, and it needs to print a line that says it installed when pasted. mods are reviewed by admins before they get on the site. you can have three waiting max.</p>
+
+      <div id="request-signin" class="notice" hidden>
+        <a href="login.html">Sign in</a> to send a request.
+      </div>
+
+      <form id="request-form" class="form" hidden>
+        <div class="form-row">
+          <label>
+            <span>Mod name</span>
+            <input name="name" type="text" maxlength="60" required>
+          </label>
+          <label>
+            <span>Version</span>
+            <input name="version" type="text" maxlength="20" value="1.0.0" required>
+          </label>
+          <label>
+            <span>Category</span>
+            <select name="tag" required>
+              <option>Gameplay</option>
+              <option>Visual</option>
+              <option>Utility</option>
+              <option>Editor</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          <span>Short description</span>
+          <input name="description" type="text" maxlength="160" required placeholder="One sentence, shown in the list">
+        </label>
+        <label>
+          <span>Details</span>
+          <textarea name="details" rows="3" maxlength="1000" placeholder="Keybinds, what it changes, anything the user should know before pasting"></textarea>
+        </label>
+        <label>
+          <span>Mod file</span>
+          <input name="file" type="file" accept=".js,text/javascript">
+        </label>
+        <label>
+          <span>Or paste the source</span>
+          <textarea name="source" rows="10" maxlength="200000" spellcheck="false" required></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="btn-primary" type="submit">Send request</button>
+          <span class="form-status" id="request-status"></span>
+        </div>
+      </form>
+
+      <div id="my-requests" hidden>
+        <h3>Your requests</h3>
+        <div class="sub-list" id="my-requests-list"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>Quartz is not affiliated with Web Dashers or RobTop Games.</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin, Quartz</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./">
+      <img class="brand-mark" src="logo.png" alt="" width="28" height="28">
+      <span>Quartz</span>
+    </a>
+    <nav class="nav-links">
+      <a href="./#mods">Mods</a>
+      <a href="#queue">Requests</a>
+      <a href="#published">Published</a>
+      <a href="#accounts" id="accounts-link" hidden>Accounts</a>
+    </nav>
+    <div class="nav-account" id="nav-account"></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero narrow">
+    <div class="wrap">
+      <h1>Admin tools</h1>
+      <p class="lead" id="intro">Checking your account...</p>
+    </div>
+  </section>
+
+  <div id="panels" hidden>
+    <section id="queue" class="prose">
+      <div class="wrap">
+        <h2>Requests waiting <span class="count-inline" id="queue-count"></span></h2>
+        <div class="sub-list" id="queue-list"></div>
+        <p class="empty small" id="queue-empty" hidden>Nothing waiting.</p>
+      </div>
+    </section>
+
+    <section id="published" class="prose">
+      <div class="wrap">
+        <h2>Published mods <span class="count-inline" id="pub-count"></span></h2>
+        <div class="sub-list" id="pub-list"></div>
+        <p class="empty small" id="pub-empty" hidden>Nothing published yet.</p>
+      </div>
+    </section>
+
+    <section id="accounts" class="prose" hidden>
+      <div class="wrap">
+        <h2>Accounts <span class="count-inline" id="acc-count"></span></h2>
+        <p>Only the owner sees this. Admins can review requests and delete mods. The owner role cannot be handed out from here.</p>
+        <div class="sub-list" id="acc-list"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>Quartz is not affiliated with Web Dashers or RobTop Games.</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
