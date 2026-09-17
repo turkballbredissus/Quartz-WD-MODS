@@ -91,16 +91,19 @@
       const head = el("div", "mod-head");
       head.append(el("span", "sub-name", r.name), el("span", "mod-version", "v" + r.version), el("span", "mod-tag", r.tag));
       left.append(head, el("div", "mod-meta", "by " + r.author_name + ", " + r.downloads + " downloads, added " + fmtDate(r.created_at)));
-      const del = el("button", "btn-ghost", "Delete");
-      del.type = "button";
-      del.addEventListener("click", async () => {
-        if (del.textContent === "Delete") { del.textContent = "Confirm delete"; return; }
-        del.disabled = true;
-        const { error } = await client.rpc("delete_mod", { p_mod: r.id });
-        if (error) { del.textContent = Q.errorText(error); del.disabled = false; return; }
-        loadPublished();
-      });
-      d.append(left, del);
+      d.appendChild(left);
+      if (Q.isOwner()) {
+        const del = el("button", "btn-ghost", "Remove");
+        del.type = "button";
+        del.addEventListener("click", async () => {
+          if (del.textContent === "Remove") { del.textContent = "Confirm remove"; return; }
+          del.disabled = true;
+          const { error } = await client.rpc("delete_mod", { p_mod: r.id });
+          if (error) { del.textContent = Q.errorText(error); del.disabled = false; return; }
+          loadPublished();
+        });
+        d.appendChild(del);
+      }
       return d;
     }));
   }
